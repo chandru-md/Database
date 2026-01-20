@@ -9,3 +9,11 @@ select concat(title, '-', released_year) as summary from books order by released
 select title, author_lname from books where author_lname like '% %';
 
 select title, released_year, stock_quantity from books order by stock_quantity  limit 3; 
+
+delete from books where title='One day power';
+
+select title, released_year, stock_quantity from books order by stock_quantity  limit 3; 
+
+select title,author_lname from books order by author_lname,title ;
+
+select ucase(concat('my fav author is ', author_fname,' ' ,author_lname)) as hell from books order by author_lname;
