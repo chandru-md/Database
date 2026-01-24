@@ -243,3 +243,43 @@ SELECT NOW();
 
 SELECT timestamp('2026-01-24 01:47:09'
 );
+
+use book_shop;
+
+show tables;
+
+create table captions_2(
+	text varchar(100),
+	created_at timestamp default current_timestamp
+);
+
+insert into captions_2(text)
+values ("I'm a student"),
+("I'm an Unemployed Person.");
+
+select * from captions;
+
+select * from captions_2;
+
+create table captions_3(
+	text varchar(100),
+    created timestamp default current_timestamp,
+    updated timestamp on update current_timestamp
+);
+
+insert into captions_3(text)
+values('i love life');
+
+select * from captions_3;
+show tables;
+set sql_safe_updates = 0;
+update captions_3 set text = 'I love USA!!!';
+
+select * from captions_3;
+
+update captions_3 set text = 'I live in germany!';
+
+select * from captions_3;
+
+
+
