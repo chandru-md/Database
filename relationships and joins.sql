@@ -90,14 +90,21 @@ select * from customers;
 
 select * from Orders;
 
-create table customers_1(
+SHOW TABLES;
+
+DROP TABLE customers;
+
+
+DROP TABLE orders;
+
+create table customers(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     email VARCHAR(50)
 );
 
-create table orders_2(
+create table orders(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     order_date DATE,
     amount DECIMAL(8,2),
@@ -106,7 +113,7 @@ create table orders_2(
 );
 
 
-INSERT INTO customers_1 (first_name, last_name, email) 
+INSERT INTO customers (first_name, last_name, email) 
 VALUES ('Boy', 'George', 'george@gmail.com'),
        ('George', 'Michael', 'gm@gmail.com'),
        ('David', 'Bowie', 'david@gmail.com'),
@@ -114,7 +121,7 @@ VALUES ('Boy', 'George', 'george@gmail.com'),
        ('Bette', 'Davis', 'bette@aol.com');
        
        
-INSERT INTO orders_2 (order_date, amount, customer_id)
+INSERT INTO orders (order_date, amount, customer_id)
 VALUES ('2016-02-10', 99.99, 1),
        ('2017-11-11', 35.50, 1),
        ('2014-12-12', 800.67, 2),
@@ -122,16 +129,52 @@ VALUES ('2016-02-10', 99.99, 1),
        ('1999-04-11', 450.25, 5);
 
 
-select * from customers_1;
+select * from customers;
 
 
 show tables;
-select * from orders_2;
+select * from orders;
 
 select * from customers;
 
 select * from orders;
 
+insert into orders_2(order_date,amount,customer_id)
+values('2026-02-02','2500.00','999');
+
+select id from customers_1 where last_name = 'George';
+
+select * from orders_2 where customer_id = 1;
+
+select * from orders_2 where customer_id = 2;
+
+select * from orders_2 where customer_id = (select id from customers_1 where last_name = 'george');
 
 
-    
+-- JOINS
+
+-- CROSS JOINT
+
+select * from customers_1,orders_2;
+
+show tables;
+
+-- 3 MAIN TYPES JOINTS OF MYSQL
+
+-- INNER JOIN
+
+SELECT * FROM CUSTOMERS;
+
+SELECT * FROM ORDERS;
+
+SELECT * FROM CUSTOMERS
+JOIN ORDERS ON CUSTOMER_ID = ORDERS.CUSTOMER_ID = CUSTOMERS.ID;
+
+SELECT FIRST_NAME,LAST_NAME,ORDER_DATE,AMOUNT FROM CUSTOMERS
+JOIN ORDERS ON CUSTOMER_ID = ORDERS.CUSTOMER_ID = CUSTOMERS.ID;
+
+select * from orders
+join customers on customers.id = orders.customer_id;
+
+select * from orders
+join customers on customers.id =orders.customer_id;
